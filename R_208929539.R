@@ -57,7 +57,7 @@ ggplot(df_long, aes(x = Responsivness_dummy, y = Value, fill = Responsivness_dum
        x = "Responsiveness Condition", y = "Score") +
   theme_minimal()
 
-#1. התפלגות כללים של feeling heard
+#1. התפלגות כללים של ״פילינג הרד״
 ggplot(df, aes(x = Total.feeling.heard)) +
   geom_histogram(aes(y = ..density..), bins = 10, fill = "blue", alpha = 0.5) +
   geom_density(color = "red", size = 1) +
@@ -65,7 +65,7 @@ ggplot(df, aes(x = Total.feeling.heard)) +
        x = "Feeling Heard Score", y = "Density") +
   theme_minimal()
 
-#2. התפלגות המשתנה התלוי לפי סוג שאלה
+#2.  התפלגות ״פילינג הרד״ לפי סוג השאלה
 
 ggplot(df, aes(x = factor(Self.disclosure_dummy), y = Total.feeling.heard, fill = factor(Self.disclosure_dummy))) +
   geom_boxplot(alpha = 0.6) +
@@ -75,7 +75,7 @@ ggplot(df, aes(x = factor(Self.disclosure_dummy), y = Total.feeling.heard, fill 
        x = "Self Disclosure Condition", y = "Feeling Heard Score") +
   theme_minimal()
 
-#3. התפלגות המשתנה התלוי לפי תוגבתיות הצ׳ט
+#3.  התפלגות ״פילינג הרד״ לפי תגבותיות הצ׳ט 
 
 ggplot(df, aes(x = factor(Responsivness_dummy), y = Total.feeling.heard, fill = factor(Responsivness_dummy))) +
   geom_violin(alpha = 0.6) +
@@ -85,7 +85,7 @@ ggplot(df, aes(x = factor(Responsivness_dummy), y = Total.feeling.heard, fill = 
        x = "Responsiveness Condition", y = "Feeling Heard Score") +
   theme_minimal()
 
-#4. הצגה גרפית של המשתנה התלוי לפי סוג שאלה, בשימוש ggdist
+#4. הצגה גרפית של ״פילינג הרד״ לפי סוג שאלה, בשימוש ggdist
 
 ggplot(df, aes(x = factor(Self.disclosure_dummy), y = Total.feeling.heard, fill = factor(Self.disclosure_dummy))) +
   stat_halfeye(adjust = 0.5, width = 0.6, .width = 0.95, justification = -0.2) +
@@ -124,7 +124,7 @@ df_clean
 summary(df_clean$High_Feeling_Heard)  # מציג סטטיסטיקות סיכום
 table(df_clean$High_Feeling_Heard)  # מציג ספירת משתתפים בכל קבוצה (0/1)
 
-#יצירת פונקציה שסופרת את אחוז המשתתפים עם תחושת הקשבה גבוהה 
+#יצירת פונקציה שסופרת את אחוז המשתתפים עם ״פיליג הרד״ גבוה 
 
 calculate_high_feeling_rate <- function(data, threshold = 3) {
   total <- nrow(data)
@@ -135,7 +135,7 @@ calculate_high_feeling_rate <- function(data, threshold = 3) {
 
 calculate_high_feeling_rate(df_clean)
 
-#יצירת פונקציה שסופרת את אחוז המשתתפים עם תחושת הקשבה גבוהה לפי תנאי הניסוי
+#יצירת פונקציה שסופרת את אחוז המשתתפים עם ״פיליג הרד״ גבוה לפי תנאי הניסוי
 
 calculate_high_feeling_by_group <- function(data, group_var, threshold = 3) {
   data %>%
