@@ -2,12 +2,12 @@
 
 The dataset consists of responses from 366 participants who took part in an experiment of a a dialogue that includes self-disclosure in front of reactive AI as a factor affecting feelings of loneliness and anthropomorphism. Each participant was randomly assigned to one of four conditions in a 2X2 design. In the manipulation, participants engaged in a conversation with a chatbot, with each participant interacting under one of the four conditions based on the following variables:
 
-## Self-Disclosure Condition vs. Generic Condition Without Disclosure:
+### Self-Disclosure Condition vs. Generic Condition Without Disclosure:
 
 1. Self-Disclosure Condition: Participants were asked to answer three questions that require self-disclosure and involve detailed information about themselves and their lives.
 2. Generic Condition Without Disclosure: Participants were asked to answer three generic questions that do not require self-disclosure and focus on technical information about their lives.
 
-## Responsive Chatbot vs. Non-Responsive Chatbot:
+### Responsive Chatbot vs. Non-Responsive Chatbot:
 
 1. Responsive Chatbot: The chatbot responded to the participant's answer for each question in an alert and attentive manner. Additionally, the chatbot answered questions about itself and shared information about itself.
 2. Non-Responsive Chatbot: The chatbot did not share any information about itself and only provided technical responses to the participant's answers.
