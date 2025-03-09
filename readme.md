@@ -49,3 +49,6 @@ The logistic regression model analyzed the likelihood of participants reporting 
 
 * The model demonstrated moderate predictive power, with an AUC of 0.63, indicating that it performs better than random chance but does not have strong predictive accuracy.
 Overall, the findings suggest that chatbot responsiveness is a significant factor in enhancing perceived feeling heard, while self-disclosure appears to reduce this perception. The model’s moderate predictive power indicates that further research is needed to identify additional factors influencing perceived social presence in chatbot interactions.
+
+
+Reis, H. T., Lemay Jr, E. P., & Finkenauer, C. (2017). Toward understanding understanding: The importance of feeling understood in relationships. Social and Personality Psychology Compass, 11(3), e12308.
