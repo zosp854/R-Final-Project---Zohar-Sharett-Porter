@@ -96,7 +96,7 @@ ggplot(df, aes(x = factor(Self.disclosure_dummy), y = Total.feeling.heard, fill 
        x = "Self Disclosure Condition", y = "Feeling Heard Score") +
   theme_minimal()
 
-#Research Question - How do chatbot responsiveness and self-disclosure affect the feeling of being heard?
+#Research Question - How do self-disclosure and chatbot responsiveness influence users' perception of feeling heard in a digital conversation?
 
 #עיבוד מקדים
 
