@@ -119,18 +119,40 @@ df_clean <- df_clean %>%
   # המרת המשתנה הבינארי לסוג factor (קטגוריאלי) כדי להתאים לרגרסיה לוגיסטית
   mutate(High_Feeling_Heard = as.factor(High_Feeling_Heard))
 
+df_clean
+
 summary(df_clean$High_Feeling_Heard)  # מציג סטטיסטיקות סיכום
 table(df_clean$High_Feeling_Heard)  # מציג ספירת משתתפים בכל קבוצה (0/1)
 
 #יצירת פונקציה שסופרת את אחוז המשתתפים עם תחושת הקשבה גבוהה 
 
-calculate_high_feeling_rate <- function(data) {
+calculate_high_feeling_rate <- function(data, threshold = 3) {
   total <- nrow(data)
-    high_feeling <- sum(data$High_Feeling_Heard == 1, na.rm = TRUE)
-    rate <- (high_feeling / total) * 100
-    return(paste("Percentage of participants with high Feeling Heard:", round(rate, 2), "%"))
+  high_feeling <- sum(data$Total.feeling.heard > threshold, na.rm = TRUE)
+  rate <- (high_feeling / total) * 100
+  return(paste("Percentage of participants with high Feeling Heard (>", threshold, "):", round(rate, 2), "%"))
 }
+
 calculate_high_feeling_rate(df_clean)
+
+#יצירת פונקציה שסופרת את אחוז המשתתפים עם תחושת הקשבה גבוהה לפי תנאי הניסוי
+
+calculate_high_feeling_by_group <- function(data, group_var, threshold = 3) {
+  data %>%
+    group_by(!!sym(group_var)) %>%
+    summarise(
+      total = n(),
+      high_feeling = sum(Total.feeling.heard > threshold, na.rm = TRUE),
+      rate = round((high_feeling / total) * 100, 2)
+    )
+}
+
+# Run the function for Self-Disclosure Condition
+calculate_high_feeling_by_group(df_clean, "Self.disclosure_dummy")
+
+# Run the function for Responsiveness Condition
+calculate_high_feeling_by_group(df_clean, "Responsivness_dummy")
+
 
 # ביצוע רגרסיה לינארית מרובה
 linear_model <- lm(Total.feeling.heard ~ Self.disclosure_dummy + Responsivness_dummy, data = df_clean)
@@ -144,6 +166,7 @@ ggplot(df_clean, aes(x = interaction(Self.disclosure_dummy, Responsivness_dummy)
   labs(title = "Effect of Self Disclosure and Responsiveness on Feeling Heard",
        x = "Condition", y = "Feeling Heard Score") +
   theme_minimal()
+
 
 # רגרסיה לוגיסטית
 logistic_model <- glm(High_Feeling_Heard ~ Self.disclosure_dummy + Responsivness_dummy, 
@@ -164,7 +187,4 @@ plot(roc_curve, col = "blue", main = "ROC Curve for Logistic Regression Model")
 
 auc_value <- auc(roc_curve)
 auc_value
-
-
-
 
